@@ -1,0 +1,11 @@
+{
+  "name": "wizi-discord-bot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bot Discord chao thanh vien moi + noi Minecraft server",
+  "main": "bot.js",
+  "dependencies": {
+    "discord.js": "^14.16.3",
+    "dotenv": "^18.0.1"
+  }
+}
