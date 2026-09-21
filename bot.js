@@ -1,7 +1,7 @@
 "use strict";
 
 require("dotenv").config({ path: require("path").resolve(__dirname, "..", "..", ".env") });
-const { Client, GatewayIntentBits } = require("discord.js");
+const { Client, GatewayIntentBits, EmbedBuilder } = require("discord.js");
 
 // Keep-alive HTTP (Render free yeu cau service mo cong)
 // Local dung 3001 (tranh PORT=3000 cua Wizi server trong .env), tren Render dung $PORT
@@ -35,7 +35,15 @@ client.on("guildMemberAdd", async (member) => {
     if (!ch || !ch.isTextBased()) return;
     const name = member.user.username;
     const server = member.guild.name;
-    await ch.send("Ch\u00e0o m\u1eebng " + name + " \u0111\u1eben v\u1edbi " + server + "!");
+    const j = member.joinedAt || new Date();
+    const p2 = (n) => String(n).padStart(2, "0");
+    const joinDate = p2(j.getDate()) + "/" + p2(j.getMonth() + 1) + "/" + j.getFullYear();
+    const emb = new EmbedBuilder()
+      .setColor(0x5eead4)
+      .setTitle("Ch\u00e0o m\u1eebng " + name + " \u0111\u1EBEn v\u1EDBi " + server + "!")
+      .setThumbnail(member.user.displayAvatarURL())
+      .setFooter({ text: "Ng\u00e0y v\u00e0o: " + joinDate });
+    await ch.send({ embeds: [emb] });
     console.log("welcomed:", name);
   } catch (e) {
     console.error("welcome loi:", e.message);
