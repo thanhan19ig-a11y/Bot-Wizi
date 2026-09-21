@@ -42,6 +42,7 @@ client.on("guildMemberAdd", async (member) => {
       .setColor(0x5eead4)
       .setTitle("Ch\u00e0o m\u1eebng " + name + " \u0111\u1ebfn v\u1EDBi " + server + "!")
       .setThumbnail(member.user.displayAvatarURL())
+      .addFields({ name: "Th\u00e0nh vi\u00ean th\u1ee9", value: String(member.guild.memberCount), inline: true })
       .setFooter({ text: "Ng\u00e0y v\u00e0o: " + joinDate });
     await ch.send({ embeds: [emb] });
     console.log("welcomed:", name);
