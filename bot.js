@@ -35,6 +35,7 @@ client.on("guildMemberAdd", async (member) => {
     if (!ch || !ch.isTextBased()) return;
     const name = member.user.username;
     const server = member.guild.name;
+    const RULES_ID = process.env.RULES_CHANNEL_ID || "1551593351323713547";
     const j = member.joinedAt || new Date();
     const p2 = (n) => String(n).padStart(2, "0");
     const joinDate = p2(j.getDate()) + "/" + p2(j.getMonth() + 1) + "/" + j.getFullYear();
@@ -44,7 +45,8 @@ client.on("guildMemberAdd", async (member) => {
       .setThumbnail(member.user.displayAvatarURL())
       .setDescription("🎈 Th\u00e0nh vi\u00ean th\u1ee9 " + member.guild.memberCount + "\n\n📅 Ng\u00e0y v\u00e0o: " + joinDate + "\n\n💬 L\u1EDDi nh\u1EAFn: Ch\u00fac b\u1EA1n c\u00f3 tr\u1EA3i nghi\u1EC7m tuy\u1EC7t v\u1EDBi t\u1EA1i server!")
       .setFooter({ text: "Wizi Bot" });
-    await ch.send({ embeds: [emb] });
+    const content = member.toString() + "\n**Ch\u00e0o m\u1eebng " + name + " \u0111\u1ebfn v\u1EDBi " + server + "!**\n\u0110\u1ECDc lu\u1EADt t\u1EA1i <#" + RULES_ID + "> nh\u00e9!";
+    await ch.send({ content: content, embeds: [emb] });
     console.log("welcomed:", name);
   } catch (e) {
     console.error("welcome loi:", e.message);
