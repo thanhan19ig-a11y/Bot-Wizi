@@ -40,7 +40,7 @@ client.on("guildMemberAdd", async (member) => {
     const joinDate = p2(j.getDate()) + "/" + p2(j.getMonth() + 1) + "/" + j.getFullYear();
     const emb = new EmbedBuilder()
       .setColor(0x5eead4)
-      .setTitle("Ch\u00e0o m\u1eebng " + name + " \u0111\u1EBEn v\u1EDBi " + server + "!")
+      .setTitle("Ch\u00e0o m\u1eebng " + name + " \u0111\u1ebfn v\u1EDBi " + server + "!")
       .setThumbnail(member.user.displayAvatarURL())
       .setFooter({ text: "Ng\u00e0y v\u00e0o: " + joinDate });
     await ch.send({ embeds: [emb] });
